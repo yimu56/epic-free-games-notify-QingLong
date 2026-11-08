@@ -1,0 +1,22 @@
+# 本地助手工作目录
+.workbuddy/
+
+# 运行期生成，可能包含 token 等敏感信息
+config.json
+token.cache
+*.log
+*.log.*
+
+# 青龙版批次状态文件（运行期生成）
+.epic_free_games_state.json
+.epic_free_games_state.json.tmp
+
+# 抓包与调试产物
+*.har
+*.pcap
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
