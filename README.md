@@ -48,7 +48,7 @@ ql raw https://raw.githubusercontent.com/yimu56/epic-free-games-notify-QingLong/
 
 | 变量名 | 值 |
 | --- | --- |
-| `YUNHU_TOKEN` | 云湖控制台「机器人发送消息链接」里 `token=` 后面的内容 |
+| `YUNHU_BOT_TOKEN` | 云湖控制台「机器人发送消息链接」里 `token=` 后面的内容 |
 | `YUNHU_RECV_ID` | 群号（`YUNHU_RECV_TYPE=group`）或用户 ID（`user`） |
 | `YUNHU_RECV_TYPE` | 可选，`group`（默认，群聊）或 `user`（私聊） |
 
@@ -93,11 +93,11 @@ cd /ql/data/scripts && EPIC_DRY_RUN=true task epic-free-games-notify.js
 
 ## 环境变量
 
-除 `YUNHU_TOKEN`、`YUNHU_RECV_ID` 外全部可选。布尔值接受 `true/false/1/0/yes/no/on/off`。
+除 `YUNHU_BOT_TOKEN`、`YUNHU_RECV_ID` 外全部可选。布尔值接受 `true/false/1/0/yes/no/on/off`。
 
 | 变量名 | 默认值 | 说明 |
 | --- | --- | --- |
-| `YUNHU_TOKEN` | 空 | 云湖机器人 token，必填；别名 `EPIC_YUNHU_TOKEN` |
+| `YUNHU_BOT_TOKEN` | 空 | 云湖机器人 token，必填；别名 `EPIC_YUNHU_BOT_TOKEN` |
 | `YUNHU_RECV_ID` | 空 | 接收者 ID，必填；别名 `EPIC_YUNHU_RECV_ID` |
 | `YUNHU_RECV_TYPE` | `group` | `group` 群聊 / `user` 私聊；大小写不敏感，别名 `EPIC_YUNHU_RECV_TYPE`，非法值会告警并回退 `group` |
 | `EPIC_LOCALE` | `zh-CN` | 接口语言，同时决定商店链接前缀 |
@@ -119,7 +119,7 @@ cd /ql/data/scripts && EPIC_DRY_RUN=true task epic-free-games-notify.js
 | `EPIC_STATE_FILE` | 脚本同目录 | 自定义状态文件路径 |
 
 配置读取优先级：青龙环境变量 > 脚本内 `DEFAULTS`。因此本地直接 `node epic-free-games-notify.js` 也能跑，
-只要把 `YUNHU_TOKEN`、`YUNHU_RECV_ID` 写进 shell 环境变量即可。
+只要把 `YUNHU_BOT_TOKEN`、`YUNHU_RECV_ID` 写进 shell 环境变量即可。
 
 ## 状态文件
 

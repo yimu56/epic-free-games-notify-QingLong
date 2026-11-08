@@ -44,7 +44,7 @@ const DEFAULTS = {
   COUNTRY: 'CN',
 
   // 云湖机器人
-  YUNHU_TOKEN: '',
+  YUNHU_BOT_TOKEN: '',
   YUNHU_RECV_ID: '',
   YUNHU_RECV_TYPE: 'group',
 
@@ -80,7 +80,7 @@ const DEFAULTS = {
 const ENV_MAP = {
   LOCALE: ['EPIC_LOCALE'],
   COUNTRY: ['EPIC_COUNTRY'],
-  YUNHU_TOKEN: ['YUNHU_TOKEN', 'EPIC_YUNHU_TOKEN'],
+  YUNHU_BOT_TOKEN: ['YUNHU_BOT_TOKEN', 'EPIC_YUNHU_BOT_TOKEN'],
   YUNHU_RECV_ID: ['YUNHU_RECV_ID', 'EPIC_YUNHU_RECV_ID'],
   YUNHU_RECV_TYPE: ['YUNHU_RECV_TYPE', 'EPIC_YUNHU_RECV_TYPE'],
   PUSH_CURRENT: ['PUSH_CURRENT', 'EPIC_PUSH_CURRENT'],
@@ -318,7 +318,7 @@ async function fetchPromotions(cfg, request) {
 }
 
 async function pushYunhu(cfg, text, contentType, request) {
-  const url = YUNHU_API + '?token=' + encodeURIComponent(cfg.YUNHU_TOKEN);
+  const url = YUNHU_API + '?token=' + encodeURIComponent(cfg.YUNHU_BOT_TOKEN);
   const payload = JSON.stringify({
     recvId: String(cfg.YUNHU_RECV_ID),
     recvType: cfg.YUNHU_RECV_TYPE,
@@ -565,7 +565,7 @@ async function run(options) {
 
   try {
     const missing = [];
-    if (!cfg.YUNHU_TOKEN) missing.push('YUNHU_TOKEN');
+    if (!cfg.YUNHU_BOT_TOKEN) missing.push('YUNHU_BOT_TOKEN');
     if (!cfg.YUNHU_RECV_ID) missing.push('YUNHU_RECV_ID');
     if (missing.length) {
       const msg = '环境变量未填写 ' + missing.join('、') + '，本次未执行';

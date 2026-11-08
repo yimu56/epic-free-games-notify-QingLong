@@ -19,7 +19,7 @@ const SCRIPT = require('../epic-free-games-notify.js');
 const TMP_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'epic-ql-test-'));
 
 const BASE_ENV = {
-  YUNHU_TOKEN: 'test-token-abcdef',
+  YUNHU_BOT_TOKEN: 'test-token-abcdef',
   YUNHU_RECV_ID: '10000001',
   QL_NOTIFY_MODE: 'off',
 };
@@ -244,7 +244,7 @@ async function exec(opts) {
   realLog('\n[场景 7] 云湖参数缺失：应跳过执行且不发请求');
   const r7 = await exec({
     stateFile: statePath('missing'),
-    env: { YUNHU_TOKEN: '', YUNHU_RECV_ID: '' },
+    env: { YUNHU_BOT_TOKEN: '', YUNHU_RECV_ID: '' },
     fixtures: FIX_PROMO(WEEK_A),
   });
   check('提示环境变量缺失', /环境变量未填写/.test(r7.result), r7.result);
@@ -254,7 +254,7 @@ async function exec(opts) {
   // ── 场景 8：环境变量覆盖与别名 ──
   realLog('\n[场景 8] 青龙环境变量：别名、布尔值、区域、首次推送');
   const cfg = SCRIPT.readConfig({
-    EPIC_YUNHU_TOKEN: 'alias-token',
+    EPIC_YUNHU_BOT_TOKEN: 'alias-token',
     EPIC_YUNHU_RECV_ID: 'alias-id',
     EPIC_COUNTRY: 'US',
     EPIC_LOCALE: 'en-US',
@@ -263,7 +263,7 @@ async function exec(opts) {
     EPIC_TZ_OFFSET: '0',
     QL_NOTIFY_MODE: 'always',
   });
-  check('token 别名生效', cfg.YUNHU_TOKEN === 'alias-token', cfg.YUNHU_TOKEN);
+  check('token 别名生效', cfg.YUNHU_BOT_TOKEN === 'alias-token', cfg.YUNHU_BOT_TOKEN);
   check('接收者别名生效', cfg.YUNHU_RECV_ID === 'alias-id', cfg.YUNHU_RECV_ID);
   check('区域覆盖生效', cfg.COUNTRY === 'US' && cfg.LOCALE === 'en-US');
   check('布尔值解析生效', cfg.PUSH_UPCOMING === false && cfg.PUSH_CURRENT === true);
@@ -285,7 +285,7 @@ async function exec(opts) {
   const r8 = await exec({
     stateFile: statePath('env'),
     env: {
-      EPIC_YUNHU_TOKEN: 'alias-token',
+      EPIC_YUNHU_BOT_TOKEN: 'alias-token',
       EPIC_COUNTRY: 'US',
       EPIC_LOCALE: 'en-US',
       EPIC_FIRST_RUN_PUSH: 'true',
