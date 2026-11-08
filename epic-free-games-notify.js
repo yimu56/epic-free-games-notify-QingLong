@@ -5,17 +5,17 @@
  * 数据来源：Epic 官方免费游戏促销接口（无需登录、无需 Cookie）
  *   https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions
  *
- * 与 ScriptCat 版的区别：
- *   - GM_xmlhttpRequest  -> Node 内置 https（零第三方依赖，可选 HTTP 代理）
- *   - GM_getValue/Set    -> 脚本同目录下的 JSON 状态文件（可用 EPIC_STATE_FILE 覆盖）
- *   - GM_notification    -> 青龙内置 sendNotify（QL_NOTIFY_MODE 控制）
- *   - @crontab           -> 青龙面板定时任务，命令：task qinglong/epic-free-games-notify.js
- *   - 配置区              -> 青龙「环境变量」，也支持脚本内默认值，本地可直接 node 运行
+ * 运行方式：
+ *   - 网络请求   -> Node 内置 https（零第三方依赖，可选 HTTP 代理）
+ *   - 状态持久化 -> 脚本同目录下的 JSON 状态文件（可用 EPIC_STATE_FILE 覆盖）
+ *   - 系统通知   -> 青龙内置 sendNotify（QL_NOTIFY_MODE 控制）
+ *   - 定时任务   -> 青龙面板 cron，命令：task epic-free-games-notify.js
+ *   - 配置       -> 青龙「环境变量」，也支持脚本内默认值，本地可直接 node 运行
  *
  * 青龙 repo 自动识别的定时规则（面板里也可以手动改）：
  * cron: 30 9,23 * * *
  *
- * 仓库：https://github.com/yimu56/epic-free-games-notify
+ * 仓库：https://github.com/yimu56/epic-free-games-notify-QingLong
  * 协议：MIT
  */
 'use strict';
